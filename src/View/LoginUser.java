@@ -14,6 +14,7 @@ public class LoginUser {
     private String login;
     private String senha;
     private String adm;
+    private String loga;
 
     /**
      * @return the login
@@ -71,4 +72,16 @@ public class LoginUser {
         this.adm = adm;
     }
     
+    /**
+     * @return the loga
+     */
+    public String getLoga() {
+        return loga;
+    }
+    /**
+     * @param loga the loga to set
+     */
+    public void setLoga(String loga) {
+        this.loga = loga;
+    }
 }

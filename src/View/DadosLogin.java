@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author gbarrosn
  */
-public class DadosLogin extends Login{
+public class DadosLogin extends ConectarSQL{
     public void verificaLogin(LoginUser loginUser) throws Exception{
         
         try{
@@ -36,7 +36,6 @@ public class DadosLogin extends Login{
         desconectar();
     }
     
-    @Override
     public void cadastrarLogin(LoginUser loginUser) throws Exception {
        
       try {
@@ -57,7 +56,6 @@ public class DadosLogin extends Login{
         desconectar();
     }
 
-    @Override
     public void alterarLoginSenha(LoginUser alterarLoginUser, LoginUser selecionadoLoginUser) throws Exception {
          try {
                         
@@ -80,7 +78,6 @@ public class DadosLogin extends Login{
         desconectar(); 
     }
 
-    @Override
     public void removerLogin(LoginUser removerLoginUser) throws Exception {
         try {
                 
@@ -97,7 +94,6 @@ public class DadosLogin extends Login{
             desconectar();
     }
 
-    @Override
     public ArrayList<LoginUser> listarLogins(LoginUser filtroLoginUser) throws Exception {
          
         ArrayList<LoginUser> listaLogins = new ArrayList<LoginUser>(); 
@@ -150,7 +146,6 @@ public class DadosLogin extends Login{
             return listaLogins;
     }
 
-    @Override
     public LoginUser logarSadEquip(LoginUser logar) throws Exception {
       
         LoginUser logado= new LoginUser();
@@ -194,7 +189,6 @@ public class DadosLogin extends Login{
         
     }
 
-    @Override
     public void resetarSenha(LoginUser loginUser) throws Exception {
         
       try {
