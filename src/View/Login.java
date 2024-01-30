@@ -4,6 +4,10 @@
  */
 package View;
 
+
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gbarrosn
@@ -38,7 +42,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/resources/GovPERGBpequeno1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/GovPERGBpequeno1.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans Narrow", 1, 18)); // NOI18N
         jLabel2.setText("Sistema de Recepção - SAD");
@@ -59,8 +63,6 @@ public class Login extends javax.swing.JFrame {
                 jButtonLogarActionPerformed(evt);
             }
         });
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/GovPERGBpequeno1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,9 +133,23 @@ public class Login extends javax.swing.JFrame {
 
     private void Logar(String login, String senha) {
     //TODO usar a classe LogarUser para fazer o login
-    LoginUser novoLogin = new LoginUser();
-    novoLogin.setLogin(login);
-    novoLogin.setSenha(senha);
+    LoginUser login2 = new LoginUser();
+    login2.setLogin(login);
+    login2.setSenha(senha);
+    try {
+        DadosLogin dadosLogin = new DadosLogin();
+        LoginUser logado = dadosLogin.logarSadEquip(login2);
+
+        if (logado.getAdm().equals("SIM")){
+            //TODO abrir tela principal
+            JOptionPane.showMessageDialog(null, "logado");
+        } else {
+            JOptionPane.showMessageDialog(null, "Login incorreto, tente novamente");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
     
 }
     private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed

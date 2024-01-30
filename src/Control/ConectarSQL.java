@@ -42,7 +42,7 @@ public class ConectarSQL {
             //CONEXAO COM O SERVIDOR ABAIXO FUNCIONANDO(COMENTEI PARA TESTAR LOCAL)
             //M AIS EM BAIXO TEM QUE MUDAR TBM:            
             
-            String url = "jdbc:sqlserver://10.1.0.12:14222;DatabaseName=Recepcao;integratedSecurity=false;trustServerCertificate=true"; 
+            String url = "jdbc:sqlserver://10.1.0.12:14222;DatabaseName=atendimentos;integratedSecurity=false;trustServerCertificate=true"; 
             
             // Login para DB no servidor da SAD
             String usuario = "sa";
@@ -78,7 +78,7 @@ public class ConectarSQL {
               
             //CONEXAO COM O SERVIDOR ABAIXO FUNCIONANDO(COMENTEI PARA TESTAR LOCAL):   
             
-            String url = "jdbc:sqlserver://10.1.0.12:14222;DatabaseName=Recepcao;integratedSecurity=false;trustServerCertificate=true"; 
+            String url = "jdbc:sqlserver://10.1.0.12:14222;DatabaseName=atendimentos;integratedSecurity=false;trustServerCertificate=true"; 
             
             // Login para DB no servidor da SAD
             String usuario = "sa";
