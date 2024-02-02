@@ -142,7 +142,10 @@ public class Login extends javax.swing.JFrame {
 
         if (logado.getAdm().equals("SIM")){
             //TODO abrir tela principal
-            JOptionPane.showMessageDialog(null, "logado");
+            //JOptionPane.showMessageDialog(null, "logado");
+            TelaPrincipal tela = new TelaPrincipal(logado.getLogin());
+            tela.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Login incorreto, tente novamente");
         }
