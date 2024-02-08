@@ -100,6 +100,11 @@ public class listaDeRamais extends javax.swing.JFrame {
         jLabel3.setText("Nome");
 
         jComboBoxPavimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPavimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxPavimentoMouseClicked(evt);
+            }
+        });
         jComboBoxPavimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPavimentoActionPerformed(evt);
@@ -219,6 +224,14 @@ public class listaDeRamais extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBoxPavimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxPavimentoActionPerformed
+
+    private void jComboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxUnidadeActionPerformed
+
+    private void jComboBoxPavimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoMouseClicked
         // TODO add your handling code here:
         try {
             // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
@@ -234,11 +247,7 @@ public class listaDeRamais extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jComboBoxPavimentoActionPerformed
-
-    private void jComboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxUnidadeActionPerformed
+    }//GEN-LAST:event_jComboBoxPavimentoMouseClicked
 
     /**
      * @param args the command line arguments
