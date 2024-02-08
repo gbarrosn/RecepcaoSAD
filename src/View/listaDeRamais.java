@@ -7,6 +7,8 @@ package View;
 import Control.DAO;
 import Model.Pavimento;
 import Model.Ramal;
+import Model.Unidade;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,6 +116,11 @@ public class listaDeRamais extends javax.swing.JFrame {
         jLabel4.setText("Pavimento");
 
         jComboBoxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxUnidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxUnidadeMouseClicked(evt);
+            }
+        });
         jComboBoxUnidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxUnidadeActionPerformed(evt);
@@ -248,6 +255,24 @@ public class listaDeRamais extends javax.swing.JFrame {
             Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jComboBoxPavimentoMouseClicked
+
+    private void jComboBoxUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeMouseClicked
+        // TODO add your handling code here:
+        try {
+            // Call the getUnidades method from the DAO class to retrieve the unidades from the database
+            List<Unidade> unidades = DAO.getUnidades();
+            
+            // Clear the existing items in the jComboBoxUnidade
+            jComboBoxUnidade.removeAllItems();
+            
+            // Populate the jComboBoxUnidade with the retrieved unidades
+            for (Unidade unidade : unidades) {
+                jComboBoxUnidade.addItem(unidade.getUnidade());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jComboBoxUnidadeMouseClicked
 
     /**
      * @param args the command line arguments
