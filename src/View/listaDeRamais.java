@@ -4,6 +4,13 @@
  */
 package View;
 
+import Control.DAO;
+import Model.Ramal;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gbarrosn
@@ -70,7 +77,7 @@ public class listaDeRamais extends javax.swing.JFrame {
             },
             new String [] {
                 "Ramal", "Nome", "Unidade", "Pavimento"
-            }
+            } 
         ));
         jScrollPane1.setViewportView(jTable1);
 
@@ -158,6 +165,22 @@ public class listaDeRamais extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //buscar, usando os dados dos combbox e texto do nome, os ramais
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing rows
+            
+            // Call the getRamais method from the DAO class to retrieve the ramais from the database
+            List<Ramal> ramais = null;
+        try {
+            ramais = DAO.getRamais();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            // Populate the table with the retrieved ramais
+            for (Ramal ramal : ramais) {
+                Object[] rowData = {ramal.getRamal(), ramal.getNome(), ramal.getGerencia(), ramal.getPavimento()};
+                model.addRow(rowData);
+            }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

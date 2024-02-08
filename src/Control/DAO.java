@@ -19,7 +19,7 @@ public class DAO {
     // Connect to the database using ConectarSQL
     
     // Retrieve a list of ramais from the table Lista_de_ramais
-    public List<Ramal> getRamais() throws ClassNotFoundException {
+    public static List<Ramal> getRamais() throws ClassNotFoundException {
         List<Ramal> ramais = new ArrayList<>();
         
         // SQL query to retrieve ramais from the table
