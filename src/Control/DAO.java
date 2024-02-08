@@ -57,6 +57,48 @@ public class DAO {
         return ramais;
     }
     
+    // Retrieve a list of ramais from the table Lista_de_ramais based on filters
+    public static List<Ramal> getRamaisFiltro(int idPavimento, int idUnidade, String nome) throws ClassNotFoundException {
+        List<Ramal> ramais = new ArrayList<>();
+        
+        // SQL query to retrieve ramais from the table based on filters
+        String query = "SELECT * \n" +
+                "FROM Lista_de_ramais ldr\n" +
+                "INNER JOIN Pavimento p ON ldr.id_andar = p.id_pavimento\n" +
+                "INNER JOIN Unidade u ON ldr.id_unidade  = u.id_unidade\n" +
+                "WHERE p.id_pavimento = ? AND u.id_unidade = ? AND ldr.nome = ?;";
+        
+        ConectarSQL conectarSQL = new ConectarSQL();
+        try (Connection connection = conectarSQL.conectarPrepared();
+            PreparedStatement statement = connection.prepareStatement(query)) {
+            
+            statement.setInt(1, idPavimento);
+            statement.setInt(2, idUnidade);
+            statement.setString(3, nome);
+            
+            ResultSet resultSet = statement.executeQuery();
+            
+            // Iterate through the result set and populate Ramal objects
+            while (resultSet.next()) {
+                String ramal = resultSet.getString("ramal");
+                String unidade = resultSet.getString("unidade");
+                String andar = resultSet.getString("pavimento");
+                
+                Ramal ramalObj = new Ramal();
+                ramalObj.setGerencia(unidade);
+                ramalObj.setNome(nome);
+                ramalObj.setPavimento(andar);
+                ramalObj.setRamal(ramal);
+                ramais.add(ramalObj);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return ramais;
+    }
+    
     // Retrieve a list of pavimentos from the table Pavimento
     public static List<Pavimento> getPavimentos() throws ClassNotFoundException {
         List<Pavimento> pavimentos = new ArrayList<>();

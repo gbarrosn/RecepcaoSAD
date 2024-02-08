@@ -202,25 +202,28 @@ public class listaDeRamais extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //buscar, usando os dados dos combbox e texto do nome, os ramais
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        if (jComboBoxPavimento.getSelectedItem() == "Item 1" && jComboBoxUnidade.getSelectedItem() == "Item 1" && jTextFieldNome.getText().equals("")) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing rows
-            
+
             // Call the getRamais method from the DAO class to retrieve the ramais from the database
             List<Ramal> ramais = null;
-        try {
-            ramais = DAO.getRamais();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+            try {
+                ramais = DAO.getRamais();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             // Populate the table with the retrieved ramais
             for (Ramal ramal : ramais) {
                 Object[] rowData = {ramal.getRamal(), ramal.getNome(), ramal.getGerencia(), ramal.getPavimento()};
                 model.addRow(rowData);
             }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        } else {
+            // Call another method for handling the case when the JComboBoxes or JTextField are not empty
+            // handleNonEmptyFields();
+        }
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
