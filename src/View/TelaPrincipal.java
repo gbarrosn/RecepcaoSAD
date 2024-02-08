@@ -109,10 +109,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeRamaisActionPerformed
+    private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
-        //aqui vai abrir a tela da lista de ramais que será lida do banco de dados
-    }//GEN-LAST:event_jButtonListaDeRamaisActionPerformed
+        // Open the interface on the ListaDeRamais class
+        listaDeRamais listaDeRamais = new listaDeRamais(login);
+        listaDeRamais.setVisible(true);
+        
+        // Close the TelaPrincipal
+        this.dispose();
+    }
 
     /**
      * @param args the command line arguments
