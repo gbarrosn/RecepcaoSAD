@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Ramal;
+import Model.Pavimento;
 /**
  *
  * @author gbarrosn
@@ -54,5 +55,36 @@ public class DAO {
         
         return ramais;
     }
+    
+    // Retrieve a list of pavimentos from the table Pavimento
+    public static List<Pavimento> getPavimentos() throws ClassNotFoundException {
+        List<Pavimento> pavimentos = new ArrayList<>();
+        
+        // SQL query to retrieve pavimentos from the table
+        String query = "SELECT * FROM Pavimento;";
+        
+        ConectarSQL conectarSQL = new ConectarSQL();
+        try (Connection connection = conectarSQL.conectarPrepared();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery()) {
+            
+            // Iterate through the result set and populate Pavimento objects
+            while (resultSet.next()) {
+                int idPavimento = resultSet.getInt("id_pavimento");
+                String pavimento = resultSet.getString("pavimento");
+                
+                Pavimento pavimentoObj = new Pavimento();
+                pavimentoObj.setIdPavimento(idPavimento);
+                pavimentoObj.setPavimento(pavimento);
+                pavimentos.add(pavimentoObj);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return pavimentos;
+    }
+    
     
 }
