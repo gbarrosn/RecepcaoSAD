@@ -23,7 +23,10 @@ public class DAO {
         List<Ramal> ramais = new ArrayList<>();
         
         // SQL query to retrieve ramais from the table
-        String query = "SELECT ramal, nome, unidade, andar FROM Lista_de_ramais";
+        String query = "SELECT * \n" + //
+                "FROM Lista_de_ramais ldr\n" + //
+                "INNER JOIN Pavimento p ON ldr.id_andar = p.id_pavimento\n" + //
+                "INNER JOIN Unidade u ON ldr.id_unidade  = u.id_unidade ;";
         
         ConectarSQL conectarSQL = new ConectarSQL();
         try (Connection connection = conectarSQL.conectarPrepared();
@@ -35,7 +38,7 @@ public class DAO {
                 String ramal = resultSet.getString("ramal");
                 String nome = resultSet.getString("nome");
                 String unidade = resultSet.getString("unidade");
-                String andar = resultSet.getString("andar");
+                String andar = resultSet.getString("pavimento");
                 
                 Ramal ramalObj = new Ramal();
                 ramalObj.setGerencia(unidade);
