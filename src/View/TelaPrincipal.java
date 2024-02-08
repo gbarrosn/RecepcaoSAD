@@ -50,16 +50,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabelNome.setText("Nome");
-        jPanel2.add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 65, -1));
+        jPanel2.add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 65, -1));
 
         jLabelHost.setText("Host");
-        jPanel2.add(jLabelHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        jPanel2.add(jLabelHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel1.setText("Sistema de Receção SAD - PE");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jButtonListaDeRamais.setText("Lista de Ramais");
+        jButtonListaDeRamais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaDeRamaisActionPerformed(evt);
+            }
+        });
 
         jButtonBuscarVisitante.setText("Buscar Visitante");
 
@@ -79,7 +84,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButtonCadastrarVisitante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -93,16 +98,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonBuscarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCadastrarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(482, 570));
+        setSize(new java.awt.Dimension(410, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeRamaisActionPerformed
+        // TODO add your handling code here:
+        //aqui vai abrir a tela da lista de ramais que será lida do banco de dados
+    }//GEN-LAST:event_jButtonListaDeRamaisActionPerformed
 
     /**
      * @param args the command line arguments
