@@ -5,6 +5,7 @@
 package View;
 
 import Control.DAO;
+import Model.Pavimento;
 import Model.Ramal;
 import java.util.List;
 import java.util.logging.Level;
@@ -219,6 +220,20 @@ public class listaDeRamais extends javax.swing.JFrame {
 
     private void jComboBoxPavimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoActionPerformed
         // TODO add your handling code here:
+        try {
+            // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
+            List<Pavimento> pavimentos = DAO.getPavimentos();
+            
+            // Clear the existing items in the jComboBoxPavimento
+            jComboBoxPavimento.removeAllItems();
+            
+            // Populate the jComboBoxPavimento with the retrieved pavimentos
+            for (Pavimento pavimento : pavimentos) {
+                jComboBoxPavimento.addItem(pavimento.getPavimento());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBoxPavimentoActionPerformed
 
     private void jComboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeActionPerformed
