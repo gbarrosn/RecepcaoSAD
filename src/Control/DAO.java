@@ -66,7 +66,7 @@ public class DAO {
                 "FROM Lista_de_ramais ldr\n" +
                 "INNER JOIN Pavimento p ON ldr.id_andar = p.id_pavimento\n" +
                 "INNER JOIN Unidade u ON ldr.id_unidade  = u.id_unidade\n" +
-                "WHERE p.id_pavimento = ? AND u.id_unidade = ? AND ldr.nome = ?;";
+                "WHERE ldr.id_andar = ? OR ldr.id_unidade = ? OR ldr.nome = ?;";
         
         ConectarSQL conectarSQL = new ConectarSQL();
         try (Connection connection = conectarSQL.conectarPrepared();
@@ -80,13 +80,14 @@ public class DAO {
             
             // Iterate through the result set and populate Ramal objects
             while (resultSet.next()) {
+                String nomeObj = resultSet.getString("nome");
                 String ramal = resultSet.getString("ramal");
                 String unidade = resultSet.getString("unidade");
                 String andar = resultSet.getString("pavimento");
                 
                 Ramal ramalObj = new Ramal();
                 ramalObj.setGerencia(unidade);
-                ramalObj.setNome(nome);
+                ramalObj.setNome(nomeObj);
                 ramalObj.setPavimento(andar);
                 ramalObj.setRamal(ramal);
                 ramais.add(ramalObj);

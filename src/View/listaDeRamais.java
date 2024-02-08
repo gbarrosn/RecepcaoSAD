@@ -219,7 +219,8 @@ public class listaDeRamais extends javax.swing.JFrame {
                 Object[] rowData = {ramal.getRamal(), ramal.getNome(), ramal.getGerencia(), ramal.getPavimento()};
                 model.addRow(rowData);
             }
-        } else {
+        } else { //TODO: aqui o filtro usa o index do combobox para popular a tabela, mas só funciona pq o index ta igual ao banco de dados. 
+            //se deletar alguma unidade no banco de dados, o index vai mudar e o filtro vai parar de funcionar
             // Call the getRamaisFiltro method from the DAO class to retrieve the filtered ramais from the database
             List<Ramal> ramais = null;
             try {
@@ -242,7 +243,7 @@ public class listaDeRamais extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         TelaPrincipal tela = new TelaPrincipal(login);
         tela.setVisible(true);
         this.dispose();
