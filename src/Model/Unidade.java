@@ -20,5 +20,3 @@ public class Unidade {
         this.unidade = unidade;
     }
 }
-    
-}
