@@ -99,10 +99,20 @@ public class listaDeRamais extends javax.swing.JFrame {
         jLabel3.setText("Nome");
 
         jComboBoxPavimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPavimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPavimentoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Pavimento");
 
         jComboBoxUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxUnidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxUnidadeActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Unidade");
 
@@ -206,6 +216,14 @@ public class listaDeRamais extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBoxPavimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPavimentoActionPerformed
+
+    private void jComboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxUnidadeActionPerformed
 
     /**
      * @param args the command line arguments
