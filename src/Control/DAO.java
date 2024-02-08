@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Ramal;
+import Model.Unidade;
 import Model.Pavimento;
 /**
  *
@@ -87,4 +88,33 @@ public class DAO {
     }
     
     
+
+// Retrieve a list of unidades from the table Unidade
+public static List<Unidade> getUnidades() throws ClassNotFoundException {
+    List<Unidade> unidades = new ArrayList<>();
+    
+    // SQL query to retrieve unidades from the table
+    String query = "SELECT * FROM Unidade;";
+    
+    ConectarSQL conectarSQL = new ConectarSQL();
+    try (Connection connection = conectarSQL.conectarPrepared();
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery()) {
+        
+        // Iterate through the result set and populate Unidade objects
+        while (resultSet.next()) {
+            int idUnidade = resultSet.getInt("id_unidade");
+            String unidade = resultSet.getString("unidade");
+            
+            Unidade unidadeObj = new Unidade();
+            unidadeObj.setIdUnidade(idUnidade);
+            unidadeObj.setUnidade(unidade);
+            unidades.add(unidadeObj);
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return unidades;
 }

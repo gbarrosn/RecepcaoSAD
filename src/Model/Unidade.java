@@ -4,11 +4,11 @@ public class Unidade {
     private int id_unidade;
     private String unidade;
 
-    public int getId_unidade() {
+    public int getIdUnidade() {
         return id_unidade;
     }
 
-    public void setId_unidade(int id_unidade) {
+    public void setIdUnidade(int id_unidade) {
         this.id_unidade = id_unidade;
     }
 
