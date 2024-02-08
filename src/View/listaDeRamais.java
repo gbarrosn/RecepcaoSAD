@@ -220,8 +220,24 @@ public class listaDeRamais extends javax.swing.JFrame {
                 model.addRow(rowData);
             }
         } else {
-            // Call another method for handling the case when the JComboBoxes or JTextField are not empty
-            // handleNonEmptyFields();
+            // Call the getRamaisFiltro method from the DAO class to retrieve the filtered ramais from the database
+            List<Ramal> ramais = null;
+            try {
+                int idPavimento = jComboBoxPavimento.getSelectedIndex(); // Assuming the index represents the id_pavimento
+                int idUnidade = jComboBoxUnidade.getSelectedIndex(); // Assuming the index represents the id_unidade
+                String nome = jTextFieldNome.getText();
+                ramais = DAO.getRamaisFiltro(idPavimento, idUnidade, nome);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Populate the table with the retrieved filtered ramais
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing rows
+            for (Ramal ramal : ramais) {
+                Object[] rowData = {ramal.getRamal(), ramal.getNome(), ramal.getGerencia(), ramal.getPavimento()};
+                model.addRow(rowData);
+            }
         }
     }
 
