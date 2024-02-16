@@ -69,6 +69,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonBuscarVisitante.setText("Buscar Visitante");
 
         jButtonCadastrarVisitante.setText("Cadastrar Visitante");
+        jButtonCadastrarVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarVisitanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,6 +113,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarVisitanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCadastrarVisitanteActionPerformed
 
     private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
