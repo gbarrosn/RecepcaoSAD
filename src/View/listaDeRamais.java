@@ -26,6 +26,35 @@ public class listaDeRamais extends javax.swing.JFrame {
     static String login = new String();
     public listaDeRamais(String login) {
         initComponents();
+        try {
+            // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
+            List<Pavimento> pavimentos = DAO.getPavimentos();
+            
+            // Clear the existing items in the jComboBoxPavimento
+            jComboBoxPavimento.removeAllItems();
+            jComboBoxPavimento.addItem("Pavimento");
+            // Populate the jComboBoxPavimento with the retrieved pavimentos
+            for (Pavimento pavimento : pavimentos) {
+                jComboBoxPavimento.addItem(pavimento.getPavimento());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            // Call the getUnidades method from the DAO class to retrieve the unidades from the database
+            List<Unidade> unidades = DAO.getUnidades();
+            
+            // Clear the existing items in the jComboBoxUnidade
+            jComboBoxUnidade.removeAllItems();
+            jComboBoxUnidade.addItem("Unidade");
+            // Populate the jComboBoxUnidade with the retrieved unidades
+            for (Unidade unidade : unidades) {
+                jComboBoxUnidade.addItem(unidade.getUnidade());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -200,9 +229,9 @@ public class listaDeRamais extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        if (jComboBoxPavimento.getSelectedItem() == "Item 1" && jComboBoxUnidade.getSelectedItem() == "Item 1" && jTextFieldNome.getText().equals("")) {
+        if (jComboBoxPavimento.getSelectedItem() == "Pavimento" && jComboBoxUnidade.getSelectedItem() == "Unidade" && jTextFieldNome.getText().equals("")) {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing rows
 
@@ -224,8 +253,8 @@ public class listaDeRamais extends javax.swing.JFrame {
             // Call the getRamaisFiltro method from the DAO class to retrieve the filtered ramais from the database
             List<Ramal> ramais = null;
             try {
-                int idPavimento = jComboBoxPavimento.getSelectedIndex(); // Assuming the index represents the id_pavimento
-                int idUnidade = jComboBoxUnidade.getSelectedIndex(); // Assuming the index represents the id_unidade
+                int idPavimento = jComboBoxPavimento.getSelectedIndex() - 1; // Assuming the index represents the id_pavimento
+                int idUnidade = jComboBoxUnidade.getSelectedIndex() - 1; // Assuming the index represents the id_unidade
                 String nome = jTextFieldNome.getText();
                 ramais = DAO.getRamaisFiltro(idPavimento, idUnidade, nome);
             } catch (ClassNotFoundException ex) {
@@ -266,7 +295,7 @@ public class listaDeRamais extends javax.swing.JFrame {
             
             // Clear the existing items in the jComboBoxPavimento
             jComboBoxPavimento.removeAllItems();
-            
+            jComboBoxPavimento.addItem("Pavimento");
             // Populate the jComboBoxPavimento with the retrieved pavimentos
             for (Pavimento pavimento : pavimentos) {
                 jComboBoxPavimento.addItem(pavimento.getPavimento());
@@ -284,7 +313,7 @@ public class listaDeRamais extends javax.swing.JFrame {
             
             // Clear the existing items in the jComboBoxUnidade
             jComboBoxUnidade.removeAllItems();
-            
+            jComboBoxUnidade.addItem("Unidade");
             // Populate the jComboBoxUnidade with the retrieved unidades
             for (Unidade unidade : unidades) {
                 jComboBoxUnidade.addItem(unidade.getUnidade());
