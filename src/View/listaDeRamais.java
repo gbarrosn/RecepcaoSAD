@@ -289,6 +289,7 @@ public class listaDeRamais extends javax.swing.JFrame {
 
     private void jComboBoxPavimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoMouseClicked
         // TODO add your handling code here:
+        jComboBoxUnidadeMouseClicked(evt);
         try {
             // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
             List<Pavimento> pavimentos = DAO.getPavimentos();
