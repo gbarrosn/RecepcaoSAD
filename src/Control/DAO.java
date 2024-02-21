@@ -66,7 +66,7 @@ public class DAO {
                 "FROM Lista_de_ramais ldr\n" +
                 "INNER JOIN Pavimento p ON ldr.id_andar = p.id_pavimento\n" +
                 "INNER JOIN Unidade u ON ldr.id_unidade  = u.id_unidade\n" +
-                "WHERE ldr.id_andar = ? OR ldr.id_unidade = ? OR ldr.nome = ?;";
+                "WHERE ldr.id_andar = ? OR ldr.id_unidade = ? OR ldr.nome LIKE '%" + nome + "%';";
         
         ConectarSQL conectarSQL = new ConectarSQL();
         try (Connection connection = conectarSQL.conectarPrepared();
@@ -74,7 +74,7 @@ public class DAO {
             
             statement.setInt(1, idPavimento);
             statement.setInt(2, idUnidade);
-            statement.setString(3, nome);
+            //statement.setString(3, nome);
             
             ResultSet resultSet = statement.executeQuery();
             

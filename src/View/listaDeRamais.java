@@ -256,6 +256,10 @@ public class listaDeRamais extends javax.swing.JFrame {
                 int idPavimento = jComboBoxPavimento.getSelectedIndex() - 1; // Assuming the index represents the id_pavimento
                 int idUnidade = jComboBoxUnidade.getSelectedIndex() - 1; // Assuming the index represents the id_unidade
                 String nome = jTextFieldNome.getText();
+                
+                if (nome.equals("")) {
+                    nome = "shalom";
+                }
                 ramais = DAO.getRamaisFiltro(idPavimento, idUnidade, nome);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
@@ -269,6 +273,38 @@ public class listaDeRamais extends javax.swing.JFrame {
                 model.addRow(rowData);
             }
         }
+        
+        try {
+            // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
+            List<Pavimento> pavimentos = DAO.getPavimentos();
+            
+            // Clear the existing items in the jComboBoxPavimento
+            jComboBoxPavimento.removeAllItems();
+            jComboBoxPavimento.addItem("Pavimento");
+            // Populate the jComboBoxPavimento with the retrieved pavimentos
+            for (Pavimento pavimento : pavimentos) {
+                jComboBoxPavimento.addItem(pavimento.getPavimento());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            // Call the getUnidades method from the DAO class to retrieve the unidades from the database
+            List<Unidade> unidades = DAO.getUnidades();
+            
+            // Clear the existing items in the jComboBoxUnidade
+            jComboBoxUnidade.removeAllItems();
+            jComboBoxUnidade.addItem("Unidade");
+            // Populate the jComboBoxUnidade with the retrieved unidades
+            for (Unidade unidade : unidades) {
+                jComboBoxUnidade.addItem(unidade.getUnidade());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jTextFieldNome.setText("");
+        
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
