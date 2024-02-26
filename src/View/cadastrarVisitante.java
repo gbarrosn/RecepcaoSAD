@@ -205,6 +205,20 @@ public class cadastrarVisitante extends javax.swing.JFrame {
 
     private void jComboBoxUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxUnidadeMouseClicked
         // TODO add your handling code here:
+        try {
+            // Call the getUnidades method from the DAO class to retrieve the unidades from the database
+            List<Unidade> unidades = DAO.getUnidades();
+            
+            // Clear the existing items in the jComboBoxUnidade
+            jComboBoxUnidade.removeAllItems();
+            jComboBoxUnidade.addItem("Unidade");
+            // Populate the jComboBoxUnidade with the retrieved unidades
+            for (Unidade unidade : unidades) {
+                jComboBoxUnidade.addItem(unidade.getUnidade());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBoxUnidadeMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -221,6 +235,20 @@ public class cadastrarVisitante extends javax.swing.JFrame {
 
     private void jComboBoxPavimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoMouseClicked
         // TODO add your handling code here:
+        try {
+            // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
+            List<Pavimento> pavimentos = DAO.getPavimentos();
+            
+            // Clear the existing items in the jComboBoxPavimento
+            jComboBoxPavimento.removeAllItems();
+            jComboBoxPavimento.addItem("Pavimento");
+            // Populate the jComboBoxPavimento with the retrieved pavimentos
+            for (Pavimento pavimento : pavimentos) {
+                jComboBoxPavimento.addItem(pavimento.getPavimento());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jComboBoxPavimentoMouseClicked
 
     /**
