@@ -132,6 +132,11 @@ public class cadastrarVisitante extends javax.swing.JFrame {
         });
 
         jButton3.setText("Imprimir Etiqueta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,6 +255,14 @@ public class cadastrarVisitante extends javax.swing.JFrame {
             Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jComboBoxPavimentoMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //TODO: conectar na impressora
+        //TODO: gerar pdf no padrão
+        //TODO: imprimir o pdf
+        //TODO: salvar no banco de dados
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
