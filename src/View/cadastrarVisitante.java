@@ -123,6 +123,11 @@ public class cadastrarVisitante extends javax.swing.JFrame {
         jLabel6.setText("Pavimento a ser visitado:");
 
         jButton1.setText("Tirar foto do visitante");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Tela Principal");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +264,11 @@ public class cadastrarVisitante extends javax.swing.JFrame {
         //TODO: imprimir o pdf
         //TODO: salvar no banco de dados
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //TODO tirar a foto e colocar na interface
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
