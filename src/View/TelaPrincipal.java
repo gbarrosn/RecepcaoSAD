@@ -116,6 +116,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarVisitanteActionPerformed
         // TODO add your handling code here:
+        cadastrarVisitante cadastrar = new cadastrarVisitante(login);
+        cadastrar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonCadastrarVisitanteActionPerformed
 
     private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {                                                     
