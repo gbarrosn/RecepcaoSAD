@@ -4,6 +4,13 @@
  */
 package View;
 
+import Control.DAO;
+import Model.Pavimento;
+import Model.Unidade;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gbarrosn
@@ -16,6 +23,35 @@ public class cadastrarVisitante extends javax.swing.JFrame {
     static String login = new String();
     public cadastrarVisitante(String login) {
         initComponents();
+        try {
+            // Call the getPavimentos method from the DAO class to retrieve the pavimentos from the database
+            List<Pavimento> pavimentos = DAO.getPavimentos();
+            
+            // Clear the existing items in the jComboBoxPavimento
+            jComboBoxPavimento.removeAllItems();
+            jComboBoxPavimento.addItem("Pavimento");
+            // Populate the jComboBoxPavimento with the retrieved pavimentos
+            for (Pavimento pavimento : pavimentos) {
+                jComboBoxPavimento.addItem(pavimento.getPavimento());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            // Call the getUnidades method from the DAO class to retrieve the unidades from the database
+            List<Unidade> unidades = DAO.getUnidades();
+            
+            // Clear the existing items in the jComboBoxUnidade
+            jComboBoxUnidade.removeAllItems();
+            jComboBoxUnidade.addItem("Unidade");
+            // Populate the jComboBoxUnidade with the retrieved unidades
+            for (Unidade unidade : unidades) {
+                jComboBoxUnidade.addItem(unidade.getUnidade());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(listaDeRamais.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,6 +109,16 @@ public class cadastrarVisitante extends javax.swing.JFrame {
         jLabel5.setText("Unidade a ser visitada:");
 
         jComboBoxPavimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPavimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxPavimentoMouseClicked(evt);
+            }
+        });
+        jComboBoxPavimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPavimentoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Pavimento a ser visitado:");
 
@@ -168,6 +214,14 @@ public class cadastrarVisitante extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBoxPavimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPavimentoActionPerformed
+
+    private void jComboBoxPavimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxPavimentoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPavimentoMouseClicked
 
     /**
      * @param args the command line arguments
