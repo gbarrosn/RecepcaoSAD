@@ -67,6 +67,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonBuscarVisitante.setText("Buscar Visitante");
+        jButtonBuscarVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarVisitanteActionPerformed(evt);
+            }
+        });
 
         jButtonCadastrarVisitante.setText("Cadastrar Visitante");
         jButtonCadastrarVisitante.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +125,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastrar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCadastrarVisitanteActionPerformed
+
+    private void jButtonBuscarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarVisitanteActionPerformed
+        // TODO add your handling code here:
+        buscarVisitante buscar = new buscarVisitante();
+        buscar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonBuscarVisitanteActionPerformed
 
     private void jButtonListaDeRamaisActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
